@@ -1,7 +1,7 @@
 puts "Do you work for a:
 	salary
 	wage"
-@category = gets.chomp
+@category = gets.chomp.downcase
 
 if @category == "salary"
 	puts "How much do you make per year?"
