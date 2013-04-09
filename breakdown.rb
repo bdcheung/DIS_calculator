@@ -1,6 +1,6 @@
 @i = "Yes"
 def continue
-	puts "Would you like to continue?"
+	puts "Would you like to see another breakdown?"
 	@i = gets.chomp.capitalize
 end
 
