@@ -5,8 +5,9 @@ cost = gets.chomp.to_f
 puts "You want to buy #{name} which costs #{cost}."
 
 if cost / @income.to_f >= 1
-	true_cost = cost / @income.to_f
-	puts "The true cost is #{true_cost.to_i} years worth of pay"
+	true_cost_years = cost / @income.to_f
+	true_cost_months = (cost % @income.to_f) / @monthly.to_f
+	puts "The true cost is #{true_cost_years.to_i} years and #{true_cost_months.to_i} months worth of pay"
 elsif cost / @monthly.to_f >= 1
 	true_cost = cost / @monthly.to_f
 	puts "The true cost is #{true_cost.to_i} months worth of pay"
