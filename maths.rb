@@ -3,26 +3,27 @@ name = gets.chomp
 puts "How much does it cost?"
 cost = gets.chomp.to_f
 puts "You want to buy #{name} which costs #{cost}."
+puts ""
+puts "But the actual cost is:"
 
-if cost / @income.to_f >= 1
-	true_cost_years = cost / @income.to_f
-	true_cost_months = (cost % @income.to_f) / @monthly.to_f
-	puts "The true cost is #{true_cost_years.to_i} years and #{true_cost_months.to_i} months worth of pay"
-elsif cost / @monthly.to_f >= 1
-	true_cost = cost / @monthly.to_f
-	puts "The true cost is #{true_cost.to_i} months worth of pay"
-elsif cost / @weekly.to_f >= 1
-	true_cost = cost / @weekly.to_f
-	puts "The true cost is #{true_cost.to_i} weeks worth of pay"
-elsif cost / @daily.to_f >= 1
-	true_cost = cost / @daily.to_f
-	puts "The true cost is #{true_cost.to_i} days worth of pay"
-elsif cost / @hourly.to_f >= 1
-	true_cost = cost / @hourly.to_f
-	puts "The true cost is #{true_cost.to_i} hours worth of pay"
-elsif cost / @minutely.to_f >= 1
-	true_cost = cost / @minutely.to_f
-	puts "The true cost of this is #{true_cost.to_i} minutes worth of pay"
-else
-	puts "Why do you even bother asking? You know you can afford it, dummy!"
+i = cost.divmod(@income.to_f)
+if i[0] >= 1
+	puts "#{i[0]} years"
 end
+
+a = i[1].divmod(@monthly.to_f)
+if a[0] >= 1
+	puts "#{a[0]} months"
+end
+
+e = a[1].divmod(@daily.to_f)
+if e[0] >= 1
+	puts "#{e[0]} days"
+end
+
+o = e[1].divmod(@hourly.to_f)
+if o[0] >= 1
+	puts "#{o[0]} hours"
+end
+u = o[1].divmod(@minutely.to_f)
+puts "and #{u[0].to_i} minutes of work"
